@@ -368,23 +368,6 @@ class QueryBuilder
         $tempSelect = $rule["select"];
         $tempSelect[] = $idField;
 
-        // Пример использования
-        $elements = [
-
-
-                1 => ['id' => 1, 'parent_id' => 0, 'data' => ['LOGIC' => 'OR']],
-                2 => ['id' => 2, 'parent_id' => 1, 'data' => ['LOGIC' => 'AND']],
-                3 => ['id' => 3, 'parent_id' => 1, 'data' => ['>=DATE_CREATE' => '15.11.2023 00:00:00']],
-                4 => ['id' => 4, 'parent_id' => 2, 'data' => ['>SORT' => '500']],
-                5 => ['id' => 5, 'parent_id' => 2, 'data' => ['<=SORT' => '700']]
-
-        ];
-
-        $hierarchy = $this->buildHierarchy($elements);
-        i($hierarchy);
-        i($elements);
-        i($rule["filter"]);
-
         $tempFilter = $this->buildHierarchy($rule["filter"]);
         $tempFilter["!" . $idField] = $blackList;
         $tempFilter["IBLOCK_ID"] = $iblockId;
@@ -404,7 +387,6 @@ class QueryBuilder
 
         $strategy = EntityStrategyFactory::getStrategy("element", $iblockId);
         $class = $strategy->compileEntity();
-i($tempFilter);
         $query = new Query($class);
         $query
             ->setSelect($tempSelect)
