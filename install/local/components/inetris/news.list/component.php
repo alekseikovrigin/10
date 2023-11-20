@@ -166,7 +166,7 @@ if (Loader::includeModule("inetris.nocode")) {
     ShowError(GetMessage("IBLOCK_MODULE_NOT_INSTALLED"));
     return;
 }
-i($arrFilter['ID']);
+
 $arParams["CACHE_FILTER"] = $arParams["CACHE_FILTER"]=="Y";
 if(!$arParams["CACHE_FILTER"] && count($arrFilter)>0)
     $arParams["CACHE_TIME"] = 0;
